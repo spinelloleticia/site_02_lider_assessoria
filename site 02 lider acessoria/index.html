@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07162f">
+  <meta name="description" content="Líder Assessoria Contábil. Assessoria para MEI, empresas, departamento pessoal, fiscal e contabilidade empresarial em Boca do Acre, Amazonas.">
+
+  <title>Líder Assessoria Contábil | Contabilidade que acompanha você</title>
+  
+  <link rel="icon" type= "image/png" href="assets/logoazul.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Marca "carregando" ANTES de qualquer conteúdo ser pintado (evita flash do site) -->
+<script>
+  document.documentElement.classList.add('lider-loading');
+  // Segurança: se algo falhar, o site é liberado após 15s
+  setTimeout(function () {
+    var l = document.getElementById('lider-loader');
+    if (l) l.remove();
+    document.documentElement.classList.remove('lider-loading');
+  }, 3000);
+</script>
+<!-- Sem JavaScript: mostra o site normalmente -->
+<noscript>
+  <style>
+    html.lider-loading body > :not(#lider-loader) { opacity: 1 !important; visibility: visible !important; }
+    #lider-loader { display: none !important; }
+  </style>
+</noscript>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300&display=swap');
+
+  #lider-loader {
+    /* ---- Personalização ---- */
+    --lider-ink:  #ffffff;   /* cor das letras e do "L" (use escuro se o site for claro) */
+    --lider-gold: #c9a85c;   /* dourado da marca */
+    --lider-bg:   transparent; /* deixe transparent para "sem fundo" ou defina ex.: #0b0b0d */
+
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: clamp(18px, 3.2vw, 34px);
+    background: var(--lider-bg);
+    transition: background-color .9s ease;
+    pointer-events: all;
+  }
+  html.lider-loading { overflow: hidden; }
+
+  #lider-loader .lider-logo {
+    width: min(78vw, 580px);
+    height: auto;
+    overflow: visible;
+    opacity: 0;
+    animation: lider-glow-in 1.2s ease .1s forwards;
+  }
+
+  /* ---------- Elementos da logo ---------- */
+  #lider-loader .l-square {
+    transform-box: fill-box;
+    transform-origin: center;
+    opacity: 0;
+    animation: lider-pop .9s cubic-bezier(.2, .9, .25, 1.15) .1s forwards;
+  }
+  #lider-loader .l-draw {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    opacity: 0;
+    animation: lider-draw var(--d, .8s) cubic-bezier(.65, 0, .25, 1) var(--t, 0s) forwards;
+  }
+  #lider-loader .l-tri {
+    transform-box: fill-box;
+    transform-origin: center;
+    opacity: 0;
+    animation: lider-drop .6s cubic-bezier(.2, .9, .3, 1.3) 1.35s forwards;
+  }
+  #lider-loader .l-sub {
+    opacity: 0;
+    filter: blur(8px);
+    animation: lider-rise 1s cubic-bezier(.2, .8, .2, 1) 2.35s forwards;
+  }
+  #lider-loader .l-sweep {
+    transform: translateX(-420px) skewX(-20deg);
+    animation: lider-sweep 1.15s cubic-bezier(.45, 0, .25, 1) 3s forwards;
+  }
+
+  /* ---------- Barra de progresso ---------- */
+  #lider-loader .lider-bar {
+    width: min(34vw, 300px);
+    height: 2px;
+    border-radius: 2px;
+    background: rgba(201, 168, 92, .18);
+    overflow: hidden;
+    opacity: 0;
+    animation: lider-fade 1s ease 1.6s forwards;
+  }
+  #lider-loader .lider-bar i {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--lider-gold) 40%, #f1dba0);
+    transform-origin: left center;
+    transform: scaleX(0);
+  }
+
+  /* ---------- Saída ---------- */
+  #lider-loader.is-leaving { background-color: transparent; pointer-events: none; }
+  #lider-loader.is-leaving .lider-logo {
+    animation: lider-out .9s cubic-bezier(.7, 0, .3, 1) forwards;
+  }
+  #lider-loader.is-leaving .lider-bar {
+    animation: lider-bar-out .5s ease forwards;
+  }
+
+  /* ---------- Site oculto e "congelado" durante a introdução ---------- */
+  html.lider-loading body > :not(#lider-loader) {
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+  /* pausa as animações CSS do site: elas começam do zero quando a intro termina */
+  html.lider-loading body > :not(#lider-loader),
+  html.lider-loading body > :not(#lider-loader) *,
+  html.lider-loading body > :not(#lider-loader) *::before,
+  html.lider-loading body > :not(#lider-loader) *::after {
+    animation-play-state: paused !important;
+  }
+  /* entrada suave do site assim que a logo some */
+  html.lider-revealed body > :not(#lider-loader) {
+    animation: lider-site-in 1s ease;
+  }
+  @keyframes lider-site-in { from { opacity: 0; } to { opacity: 1; } }
+
+  /* ---------- Keyframes ---------- */
+  @keyframes lider-glow-in {
+    from { opacity: 0; filter: drop-shadow(0 0 0 rgba(201,168,92,0)); }
+    to   { opacity: 1; filter: drop-shadow(0 0 28px rgba(201,168,92,.22)); }
+  }
+  @keyframes lider-pop {
+    from { opacity: 0; transform: scale(.55) rotate(-6deg); }
+    to   { opacity: 1; transform: scale(1) rotate(0); }
+  }
+  @keyframes lider-draw {
+    0%   { stroke-dashoffset: 1; opacity: 0; }
+    3%   { opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 1; }
+  }
+  @keyframes lider-drop {
+    from { opacity: 0; transform: translate(-16px, -16px) scale(.5); }
+    to   { opacity: 1; transform: translate(0, 0) scale(1); }
+  }
+  @keyframes lider-rise {
+    from { opacity: 0; transform: translateY(14px); filter: blur(8px); }
+    to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+  }
+  @keyframes lider-sweep {
+    from { transform: translateX(-420px) skewX(-20deg); }
+    to   { transform: translateX(1700px) skewX(-20deg); }
+  }
+  @keyframes lider-fade { to { opacity: 1; } }
+  @keyframes lider-out {
+    0%   { opacity: 1; transform: scale(1);    filter: blur(0)   drop-shadow(0 0 28px rgba(201,168,92,.22)); }
+    100% { opacity: 0; transform: scale(1.1);  filter: blur(10px) drop-shadow(0 0 60px rgba(201,168,92,.5)); }
+  }
+  @keyframes lider-bar-out { to { opacity: 0; } }
+
+  /* ---------- Acessibilidade: movimento reduzido ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    #lider-loader .lider-logo,
+    #lider-loader .l-square,
+    #lider-loader .l-draw,
+    #lider-loader .l-tri,
+    #lider-loader .l-sub,
+    #lider-loader .lider-bar { animation-duration: .01s !important; animation-delay: 0s !important; }
+    #lider-loader .l-sweep { display: none; }
+  }
+</style>
+
+</head>
+
+<script>
+(function () {
+  var loader = document.getElementById('lider-loader');
+  if (!loader) return;
+
+  var root    = document.documentElement;
+  var bar     = loader.querySelector('.lider-bar i');
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var MIN_TIME = reduced ? 600 : 4000;  // tempo mínimo (ms) para a animação completa
+  var EXIT_MS  = reduced ? 50  : 900;   // duração da saída
+  var start    = performance.now();
+  var loaded   = document.readyState === 'complete';
+  var done     = false;
+  var shown    = 0;
+
+  root.classList.add('lider-loading');
+
+  if (!loaded) window.addEventListener('load', function () { loaded = true; });
+
+  function finish() {
+    if (done) return;
+    done = true;
+    loader.classList.add('is-leaving');
+    // 1) a logo some  →  2) o site é liberado e começa a animar
+    setTimeout(function () {
+      loader.remove();
+      root.classList.remove('lider-loading');   // libera o site e despausa as animações
+      root.classList.add('lider-revealed');     // fade-in do conteúdo
+      window.dispatchEvent(new CustomEvent('lider:loaded')); // use para iniciar scripts/animações do site
+      setTimeout(function () { root.classList.remove('lider-revealed'); }, 1200);
+    }, EXIT_MS);
+  }
+
+  function tick(now) {
+    var t      = Math.min((now - start) / MIN_TIME, 1);
+    var target = loaded ? 1 : 0.92;               // trava em 92% até a página carregar de verdade
+    shown += (Math.min(t, target) - shown) * 0.12;
+    bar.style.transform = 'scaleX(' + shown.toFixed(4) + ')';
+
+    if (loaded && t >= 1 && shown > 0.995) { bar.style.transform = 'scaleX(1)'; finish(); return; }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  setTimeout(finish, 12000); // segurança: nunca prende o visitante
+})();
+</script>
+
+<body>
+
+<div id="lider-loader" role="status" aria-live="polite" aria-label="Carregando Líder Assessoria Contábil">
+
+  <svg class="lider-logo" viewBox="50 415 1210 440" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="lider-gold" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0"   stop-color="#e2c47f"/>
+        <stop offset=".5"  stop-color="#c9a85c"/>
+        <stop offset="1"   stop-color="#ad8a3f"/>
+      </linearGradient>
+
+      <linearGradient id="lider-sweep-grad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0"   stop-color="#fff2c4" stop-opacity="0"/>
+        <stop offset=".5"  stop-color="#fff2c4" stop-opacity=".95"/>
+        <stop offset="1"   stop-color="#fff2c4" stop-opacity="0"/>
+      </linearGradient>
+
+      <!-- Máscara: o brilho só aparece sobre a logo, nunca sobre o "fundo" -->
+      <mask id="lider-ink-mask" maskUnits="userSpaceOnUse" x="50" y="415" width="1210" height="330">
+        <use href="#lider-ink"/>
+      </mask>
+    </defs>
+
+    <!-- LOGO -->
+    <g id="lider-ink" fill="none" stroke="var(--lider-ink, #fff)" stroke-width="42"
+       stroke-linecap="round" stroke-linejoin="round">
+
+      <!-- Quadrado dourado -->
+      <rect class="l-square" x="68" y="433" width="281" height="311" rx="30"
+            fill="url(#lider-gold)" stroke="none"/>
+
+      <!-- "L" -->
+      <path class="l-draw" pathLength="1" style="--t:.55s;--d:.9s" stroke-width="44"
+            d="M135 492 V585 C135 648 180 690 240 690 H276"/>
+
+      <!-- "I": haste + triângulo dourado -->
+      <path class="l-draw" pathLength="1" style="--t:.95s;--d:.6s"
+            d="M404 548 V696"/>
+      <polygon class="l-tri" points="383,470 425,470 425,507"
+               fill="var(--lider-gold, #c9a85c)" stroke="none"/>
+
+      <!-- "D" -->
+      <path class="l-draw" pathLength="1" style="--t:1.15s;--d:1s"
+            d="M476 696 V491 H565 C640 491 669 545 669 594 C669 643 640 696 565 696 Z"/>
+
+      <!-- "E" (três barras) -->
+      <path class="l-draw" pathLength="1" style="--t:1.55s;--d:.55s" d="M743 491 H926"/>
+      <path class="l-draw" pathLength="1" style="--t:1.7s;--d:.55s"  d="M743 593 H907"/>
+      <path class="l-draw" pathLength="1" style="--t:1.85s;--d:.55s" d="M743 696 H934"/>
+
+      <!-- "R" -->
+      <path class="l-draw" pathLength="1" style="--t:1.8s;--d:.9s"
+            d="M1006 696 V491 H1130 C1165 491 1196 515 1196 543 C1196 571 1165 595 1130 595 H1006"/>
+      <path class="l-draw" pathLength="1" style="--t:2.3s;--d:.4s"
+            d="M1137 612 L1204 696"/>
+    </g>
+
+    <!-- Brilho que atravessa a logo -->
+    <g mask="url(#lider-ink-mask)">
+      <rect class="l-sweep" x="0" y="400" width="240" height="480" fill="url(#lider-sweep-grad)"/>
+    </g>
+
+    <!-- ASSESSORIA CONTÁBIL -->
+    <text class="l-sub" x="70" y="838" textLength="1170" lengthAdjust="spacing"
+          font-family="'Montserrat','Josefin Sans','Helvetica Neue',Arial,sans-serif"
+          font-weight="200" font-size="64" fill="var(--lider-ink, #fff)">ASSESSORIA CONTÁBIL</text>
+  </svg>
+
+  <div class="lider-bar"><i></i></div>
+</div>
+
+<div class="demo-site"><span></span></div>
+
+<div class="page-loader" id="page-loader">
+    <div class="loader-logo"><video src="assets/video.mp4.mp4"></video><span></span></div>
+    <div class="loader-line"><span></span></div>
+    <p>Preparando seu próximo passo</p>
+</div>
+
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <header class="header" id="topo">
+    <div class="container nav-wrap">
+      <a class="brand" href="#topo" aria-label="Líder Assessoria Contábil - início">
+        <img src="assets/logo.png" alt="Líder Assessoria Contábil" class="brand-logo">
+      </a>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="nav">
+        <a href="#servicos">Serviços</a>
+        <a href="#diagnostico">Diagnóstico</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#sobre">Sobre nós</a>
+        <a href="#contato" class="nav-contact">Fale conosco <span>↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero section-dark" id="inicio">
+      <div class="hero-grid"></div>
+
+      <div class="floating-scene" aria-hidden="true">
+        <div class="cube cube-one"><span></span></div>
+        <div class="cube cube-two"><span></span></div>
+        <div class="cube cube-three"><span></span></div>
+        <div class="cube cube-four"><span></span></div>
+        <div class="cube cube-five"><span></span></div>
+        <div class="cube cube-six"><span></span></div>
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+      </div>
+
+      <div class="container hero-layout">
+        <div class="hero-content reveal">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> CONTABILIDADE COM PRESENÇA</div>
+
+          <h1>Seu negócio merece uma contabilidade <span class="gold-text">que vai além dos números.</span></h1>
+
+          <p class="hero-description">
+            Cuidamos da parte contábil para você ter mais clareza, segurança e tempo para fazer seu negócio crescer.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-gold" data-whatsapp data-message="Olá! Gostaria de conhecer os serviços da Líder Assessoria Contábil." href="https://wa.me/5597981175782" target="_blank" rel="noopener">
+              Vamos conversar <span>↗</span>
+            </a>
+            <a class="btn btn-outline" href="#servicos">Conheça nossos serviços <span>↓</span></a>
+          </div>
+
+          <div class="hero-details">
+            <div class="detail-icon">⌖</div>
+            <div>
+              <strong>Boca do Acre — AM</strong>
+              <span>Atendimento próximo e personalizado</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal reveal-delay">
+          <div class="visual-glow"></div>
+          <div class="orbit orbit-large"></div>
+          <div class="orbit orbit-small"></div>
+
+          <div class="dashboard-card">
+            <div class="dashboard-top">
+              <div>
+                <span class="dashboard-kicker">LÍDER ASSESSORIA</span>
+                <h3>Mais clareza.<br>Melhores decisões.</h3>
+              </div>
+              <div class="dashboard-mark">L</div>
+            </div>
+
+            <div class="dashboard-rule"></div>
+
+            <div class="dashboard-item">
+              <span class="dashboard-icon">▤</span>
+              <div>
+                <strong>Organização financeira</strong>
+                <small>Informações para decidir melhor</small>
+              </div>
+              <span class="item-check">✓</span>
+            </div>
+
+            <div class="dashboard-item">
+              <span class="dashboard-icon">▤</span>
+              <div>
+                <strong>Rotina em dia</strong>
+                <small>Acompanhamento contábil</small>
+              </div>
+              <span class="item-check">✓</span>
+            </div>
+
+            <div class="dashboard-item">
+              <span class="dashboard-icon">◎</span>
+              <div>
+                <strong>Atendimento humano</strong>
+                <small>Orientação para cada etapa</small>
+              </div>
+              <span class="item-check">✓</span>
+            </div>
+
+          <div class="dashboard-footer">
+              <span class="footer-dot"></span>
+              <span>Ao lado de quem empreende</span>
+            </div>
+          </div>
+
+          <div class="floating-note note-top">
+            <span class="note-symbol">✦</span>
+            <span><strong>Seu negócio</strong><small>em boas mãos</small></span>
+          </div>
+
+        
+        </div>
+      </div>
+
+      <a href="#publico" class="scroll-hint" aria-label="Rolar para a próxima seção">
+        <span></span> DESÇA PARA CONHECER
+      </a>
+    </section>
+
+    <!-- PÚBLICO -->
+    <section class="audience section-light" id="publico">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow eyebrow-dark">PARA CADA MOMENTO</span>
+          <h2>O seu negócio tem uma história.<br><span class="blue-text">A contabilidade acompanha cada capítulo.</span></h2>
+          <p>Seja para começar, organizar ou crescer, você pode contar com orientação adequada à sua realidade.</p>
+        </div>
+
+        <div class="audience-grid">
+          <article class="audience-card reveal">
+            <div class="card-icon">▦</div>
+            <h3>Quem quer empreender</h3>
+            <p>Orientação para abrir seu CNPJ e começar com mais organização.</p>
+            <a href="#diagnostico">Quero abrir o meu negócio <span>↗</span></a>
+          </article>
+
+          <article class="audience-card reveal reveal-delay">
+            <div class="card-icon">MEI</div>
+            <h3>MEI e pequenas empresas</h3>
+            <p>Suporte para obrigações, regularização e rotina do seu negócio.</p>
+            <a href="#diagnostico">Organizar meu MEI <span>↗</span></a>
+          </article>
+
+          <article class="audience-card reveal reveal-delay-2">
+            <div class="card-icon">▦</div>
+            <h3>Empresas com equipe</h3>
+            <p>Mais apoio nas rotinas de departamento pessoal e obrigações.</p>
+            <a href="#diagnostico">Preciso de apoio <span>↗</span></a>
+          </article>
+
+          <article class="audience-card reveal reveal-delay-3">
+            <div class="card-icon">⌂</div>
+            <h3>Produtores rurais</h3>
+            <p>Orientação contábil para as necessidades da atividade rural.</p>
+            <a href="#contato">Falar sobre minha atividade <span>↗</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section class="services section-dark" id="servicos">
+      <div class="container">
+        <div class="section-heading section-heading-light reveal">
+          <span class="eyebrow">COMO PODEMOS AJUDAR</span>
+          <h2>Uma assessoria que entende<br><span class="gold-text">o que seu negócio precisa.</span></h2>
+          <p>Serviços pensados para simplificar processos e ajudar você a manter a empresa organizada.</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <div class="service-top">
+              <span class="service-icon">▥</span>
+              <span class="service-index">CONTÁBIL</span>
+            </div>
+            <h3>Contabilidade empresarial</h3>
+            <p>Acompanhamento das rotinas contábeis para apoiar a gestão da sua empresa.</p>
+            <ul>
+              <li>Escrituração contábil</li>
+              <li>Obrigações fiscais</li>
+              <li>Orientação tributária</li>
+            </ul>
+            <a href="#" class="text-link" data-whatsapp data-service="Contabilidade empresarial">Solicitar orientação <span>↗</span></a>
+          </article>
+
+          <article class="service-card reveal reveal-delay">
+            <div class="service-top">
+              <span class="service-icon">＋</span>
+              <span class="service-index">EMPRESAS</span>
+            </div>
+            <h3>Abertura e regularização</h3>
+            <p>Orientação para formalizar, alterar ou regularizar o seu negócio.</p>
+            <ul>
+              <li>Abertura e encerramento de empresas</li>
+              <li>Alterações cadastrais</li>
+              <li>Regularização fiscal e tributária</li>
+            </ul>
+            <a href="#" class="text-link" data-whatsapp data-service="Abertura e regularização de empresas">Solicitar orientação <span>↗</span></a>
+          </article>
+
+          <article class="service-card reveal reveal-delay-2">
+            <div class="service-top">
+              <span class="service-icon">▤</span>
+              <span class="service-index">PESSOAS</span>
+            </div>
+            <h3>Departamento pessoal</h3>
+            <p>Suporte para as rotinas trabalhistas e administrativas da equipe.</p>
+            <ul>
+              <li>Folha de pagamento</li>
+              <li>Admissões e desligamentos</li>
+              <li>eSocial e obrigações</li>
+            </ul>
+            <a href="#" class="text-link" data-whatsapp data-service="Departamento pessoal">Solicitar orientação <span>↗</span></a>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-top">
+              <span class="service-icon">◈</span>
+              <span class="service-index">MEI</span>
+            </div>
+            <h3>Suporte ao MEI</h3>
+            <p>Ajuda para entender as obrigações e manter sua formalização organizada.</p>
+            <ul>
+              <li>Declaração anual do MEI</li>
+              <li>Emissão de DAS</li>
+              <li>Orientação sobre limites</li>
+            </ul>
+            <a href="#" class="text-link" data-whatsapp data-service="Suporte ao MEI">Solicitar orientação <span>↗</span></a>
+          </article>
+
+          <article class="service-card reveal reveal-delay">
+            <div class="service-top">
+              <span class="service-icon">⌂</span>
+              <span class="service-index">RURAL</span>
+            </div>
+            <h3>Assessoria rural</h3>
+            <p>Orientação para questões contábeis e fiscais ligadas à atividade rural.</p>
+            <ul>
+              <li>Imposto de Renda rural</li>
+              <li>Orientação fiscal</li>
+              <li>Organização documental</li>
+              <li>Folha de pagamento</li>
+            </ul>
+            <a href="#" class="text-link" data-whatsapp data-service="Assessoria rural">Solicitar orientação <span>↗</span></a>
+          </article>
+
+          <article class="service-card reveal reveal-delay-2">
+            <div class="service-top">
+              <span class="service-icon">◎</span>
+              <span class="service-index">ATENDIMENTO</span>
+            </div>
+            <h3>Atendimento personalizado</h3>
+            <p>Converse com a equipe para entender quais serviços fazem sentido para você.</p>
+            <ul>
+              <li>Análise da necessidade</li>
+              <li>Orientação inicial</li>
+              <li>Encaminhamento adequado</li>
+              <li>Imposto de Renda da pessoa física e jurídica</li>
+              <li>Emissão de Certificado digital presencialmente</li>
+              <li>Assessoria em processo licitatório</li>
+            </ul>
+            <a href="#" class="text-link" data-whatsapp data-service="Atendimento personalizado">Falar com a equipe <span>↗</span></a>
+          </article>
+        </div>
+
+        <div class="services-bottom reveal">
+          <span class="services-bottom-icon">✦</span>
+          <p>Não sabe exatamente qual serviço precisa? <strong>Vamos entender juntos.</strong></p>
+          <a href="#diagnostico" class="btn btn-gold">Encontrar meu caminho <span>↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIAGNÓSTICO -->
+    <section class="diagnosis section-light" id="diagnostico">
+      <div class="container diagnosis-layout">
+        <div class="diagnosis-copy reveal">
+          <span class="eyebrow eyebrow-dark">PRIMEIRO PASSO</span>
+          <h2>Vamos descobrir<br>o que você <span class="blue-text">precisa?</span></h2>
+          <p>Responda três perguntas rápidas. Ao final, você poderá enviar suas respostas à nossa equipe pelo WhatsApp.</p>
+
+          <div class="diagnosis-benefit"><span>✓</span> Direcionamento inicial</div>
+          <div class="diagnosis-benefit"><span>✓</span> Atendimento mais objetivo</div>
+          <div class="diagnosis-benefit"><span>✓</span> Sem compromisso</div>
+        </div>
+
+        <div class="diagnosis-box reveal reveal-delay">
+          <div class="diagnosis-progress">
+            <div class="progress-label"><span id="step-label">ETAPA 01 DE 03</span><span id="progress-percent">33%</span></div>
+            <div class="progress-track"><span id="diagnosis-progress-fill"></span></div>
+          </div>
+
+          <div class="diagnosis-step active" data-step="0">
+            <span class="step-kicker">VAMOS COMEÇAR</span>
+            <h3>Qual é o seu perfil?</h3>
+            <p>Escolha a opção que mais combina com você.</p>
+            <div class="choice-grid">
+              <button class="choice" data-group="profile" data-value="MEI"><span>◈</span> Sou MEI</button>
+              <button class="choice" data-group="profile" data-value="Empresa"><span>▥</span> Tenho uma empresa</button>
+              <button class="choice" data-group="profile" data-value="Produtor rural"><span>⌂</span> Sou produtor rural</button>
+              <button class="choice" data-group="profile" data-value="Pessoa física"><span>◎</span> Pessoa física</button>
+              <button class="choice choice-wide" data-group="profile" data-value="Ainda vou abrir meu negócio"><span>＋</span> Quero abrir meu negócio</button>
+            </div>
+          </div>
+
+          <div class="diagnosis-step" data-step="1">
+            <span class="step-kicker">SUA NECESSIDADE</span>
+            <h3>Como podemos ajudar?</h3>
+            <p>Selecione a sua principal necessidade neste momento.</p>
+            <div class="choice-grid">
+              <button class="choice" data-group="need" data-value="Abrir ou regularizar empresa">Abrir ou regularizar empresa</button>
+              <button class="choice" data-group="need" data-value="Contabilidade e impostos">Contabilidade e impostos</button>
+              <button class="choice" data-group="need" data-value="Departamento pessoal">Departamento pessoal</button>
+              <button class="choice" data-group="need" data-value="Declarações e documentos">Declarações e documentos</button>
+              <button class="choice choice-wide" data-group="need" data-value="Ainda tenho dúvidas">Ainda tenho dúvidas</button>
+            </div>
+          </div>
+
+          <div class="diagnosis-step" data-step="2">
+            <span class="step-kicker">ÚLTIMA PERGUNTA</span>
+            <h3>Quando precisa de ajuda?</h3>
+            <p>Isso nos ajuda a entender como direcionar o atendimento.</p>
+            <div class="choice-grid">
+              <button class="choice choice-wide" data-group="urgency" data-value="O quanto antes">O quanto antes</button>
+              <button class="choice choice-wide" data-group="urgency" data-value="Nos próximos dias">Nos próximos dias</button>
+              <button class="choice choice-wide" data-group="urgency" data-value="Estou pesquisando e me planejando">Estou pesquisando e me planejando</button>
+            </div>
+          </div>
+
+          <div class="diagnosis-result" id="diagnosis-result" hidden>
+            <div class="result-check">✓</div>
+            <span class="step-kicker">SEU PRÓXIMO PASSO</span>
+            <h3>Vamos conversar?</h3>
+            <p id="diagnosis-summary">Suas respostas estão prontas para enviar à nossa equipe.</p>
+            <button class="btn btn-gold btn-full" id="send-diagnosis">Enviar respostas pelo WhatsApp <span>↗</span></button>
+            <button class="restart-button" id="restart-diagnosis">Refazer respostas</button>
+          </div>
+
+          <div class="diagnosis-controls" id="diagnosis-controls">
+            <button class="back-button" id="diagnosis-back" disabled>← Voltar</button>
+            <button class="btn btn-blue" id="diagnosis-next" disabled>Continuar <span>→</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIMULADOR MEI -->
+    <section class="mei-section section-dark" id="mei">
+      <div class="container mei-layout">
+        <div class="mei-copy reveal">
+          <span class="eyebrow">UMA CONTA IMPORTANTE</span>
+          <h2>MEI: acompanhe seu faturamento com <span class="gold-text">mais clareza.</span></h2>
+          <p>Use esta ferramenta como uma estimativa inicial do limite anual tradicional de faturamento do MEI. Ela não substitui a análise contábil da sua situação.</p>
+          <div class="mei-note">
+            <span>i</span>
+            <p>O limite e as regras aplicáveis devem ser confirmados conforme a legislação vigente e a situação específica da sua empresa.</p>
+          </div>
+        </div>
+
+        <div class="mei-calculator reveal reveal-delay">
+          <div class="calculator-heading">
+            <div>
+              <span class="calculator-kicker">SIMULADOR INFORMATIVO</span>
+              <h3>Seu faturamento</h3>
+            </div>
+            <div class="calculator-icon">％</div>
+          </div>
+
+          <label for="opening-month">Em qual mês seu MEI foi aberto?</label>
+          <select id="opening-month">
+            <option value="1">Janeiro</option>
+            <option value="2">Fevereiro</option>
+            <option value="3">Março</option>
+            <option value="4">Abril</option>
+            <option value="5">Maio</option>
+            <option value="6">Junho</option>
+            <option value="7">Julho</option>
+            <option value="8">Agosto</option>
+            <option value="9">Setembro</option>
+            <option value="10">Outubro</option>
+            <option value="11">Novembro</option>
+            <option value="12">Dezembro</option>
+          </select>
+
+          <label for="mei-revenue">Quanto você faturou no ano? (R$)</label>
+          <input id="mei-revenue" type="number" min="0" step="0.01" placeholder="Ex.: 35000">
+
+          <div class="calculator-result">
+            <span>Limite proporcional estimado</span>
+            <strong id="remaining-value">R$ 81.000,00</strong>
+            <div class="revenue-track"><span id="revenue-fill"></span></div>
+            <div class="revenue-labels"><span id="revenue-status">Informe seu faturamento</span><span id="revenue-percent">0%</span></div>
+          </div>
+
+          <button class="btn btn-gold btn-full" id="calculate-mei">Calcular estimativa <span>↗</span></button>
+          <button class="text-link calculator-send" id="send-mei-result">Conversar com a contabilidade <span>↗</span></button>
+          <p class="calculator-disclaimer">Estimativa ilustrativa, não é declaração oficial nem garantia de enquadramento.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EQUIPE -->
+    <section class="team section-light" id="equipe">
+      <div class="container">
+        <div class="team-heading reveal">
+          <div>
+            <span class="eyebrow eyebrow-dark">QUEM ESTÁ COM VOCÊ</span>
+            <h2>Por trás dos números,<br><span class="blue-text">existem pessoas.</span></h2>
+          </div>
+          <p>Aqui você fala com quem conhece a sua empresa pelo nome. Cuidamos da contabilidade para você cuidar do seu negócio.</p>
+        </div>
+
+        <div class="team-layout">
+          <div class="team-photo-wrap reveal">
+            <div class="team-photo-frame">
+              <img src="assets/equipelider.jpeg" alt="Equipe da Líder Assessoria Contábil" loading="lazy">
+            </div>
+            <div class="team-photo-caption">
+              <span class="caption-mark">L</span>
+              <span><strong>Líder Assessoria Contábil</strong><small>Conhecimento que caminha com você</small></span>
+            </div>
+          </div>
+
+          <div class="team-list">
+            <article class="team-member reveal">
+              <span class="member-number">01</span>
+              <div>
+                <h3>Antônio Carlos</h3>
+                <p>Contador CRC/AM 018066/O · Economista · Especialista em contabilidade tributária</p>
+              </div>
+              
+            </article>
+
+            <article class="team-member reveal reveal-delay">
+              <span class="member-number">02</span>
+              <div>
+                <h3>Aline Kely</h3>
+                <p>Departamento Pessoal · Técnica em Segurança do Trabalho</p>
+              </div>
+              
+            </article>
+
+            <article class="team-member reveal reveal-delay-2">
+              <span class="member-number">03</span>
+              <div>
+                <h3>Letícia Spinello</h3>
+                <p>Auxiliar Fiscal · Atendimento</p>
+              </div>
+              
+            </article>
+
+            <div class="team-cta reveal">
+              <p>Quer entender como podemos ajudar a sua empresa? Converse com a gente.</p>
+              <a class="btn btn-blue" data-whatsapp data-message="Olá! Gostaria de conversar com a equipe da Líder Assessoria Contábil." href="https://wa.me/5597981175782" target="_blank" rel="noopener">Fale com a equipe <span>↗</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="about section-dark" id="sobre">
+      <div class="about-glow"></div>
+      <div class="container about-layout">
+        <div class="about-mark reveal"><img src="assets/fotosemfundo.png" alt=""><span></span></div>
+        <div class="about-content reveal reveal-delay">
+          <span class="eyebrow">LÍDER ASSESSORIA CONTÁBIL</span>
+          <h2>Histórias construídas com confiança. Um legado que <span class="gold-text">Continua.</span></h2>
+          <p>Mais do que cuidar de números, construímos relações, acompanhamos sonhos e ajudamos empresas a crescer. Nossa história é feita de dedicação, compromisso e pessoas que deixam sua marca em tudo que fazem.</p>
+          <a class="btn btn-outline" href="#contato">Conheça nosso atendimento <span>↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section section-light" id="duvidas">
+      <div class="container faq-layout">
+        <div class="faq-intro reveal">
+          <span class="eyebrow eyebrow-dark">DÚVIDAS FREQUENTES</span>
+          <h2>Vamos esclarecer<br><span class="blue-text">algumas coisas?</span></h2>
+          <p>Se sua dúvida não estiver aqui, fale com nossa equipe.</p>
+          <a class="text-link" data-whatsapp data-message="Olá! Tenho uma dúvida e gostaria de falar com a Líder Assessoria Contábil." href="https://wa.me/5597981175782" target="_blank" rel="noopener">Enviar minha dúvida <span>↗</span></a>
+        </div>
+
+        <div class="faq-list reveal reveal-delay">
+          <details class="faq-item">
+            <summary>Quero abrir uma empresa. Por onde começo?<span>＋</span></summary>
+            <p>O primeiro passo é entender a atividade que você deseja exercer, o modelo do negócio e suas necessidades. A partir disso, nossa equipe orienta você em cada etapa da abertura, desde a escolha do enquadramento empresarial até a regularização da empresa, cuidando dos procedimentos necessários para que você comece com segurança e tranquilidade.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Preciso de contador se minha empresa é pequena?<span>＋</span></summary>
+            <p>Sim, a empresa precisa de contabilidade regular, mesmo pequena. Um contador ajuda a pagar o imposto certo, evitar multas e entender se o negócio está dando resultado.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Estou com a empresa parada ou com pendências. Vocês ajudam a regularizar?<span>＋</span></summary>
+            <p>Sim, ajudamos a levantar o que está pendente e a organizar o caminho para regularizar.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Posso ter funcionário sendo MEI?<span>＋</span></summary>
+            <p>O MEI pode ter um empregado, com regras específicas de registro e encargos. Para saber como fazer sem erro, fale com a nossa equipe.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Como funciona o primeiro atendimento?<span>＋</span></summary>
+            <p>Você conta sua situação pelo WhatsApp, entendemos o que precisa e indicamos os próximos passos, sem compromisso.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="contact section-dark" id="contato">
+      <div class="contact-glow"></div>
+      <div class="container contact-layout">
+        <div class="contact-copy reveal">
+          <span class="eyebrow">VAMOS CONVERSAR?</span>
+          <h2>O próximo passo do seu negócio pode <span class="gold-text">começar aqui.</span></h2>
+          <p>Conte o que você precisa. Nossa equipe pode ajudar você a encontrar o melhor caminho.</p>
+          <a class="btn btn-gold" data-whatsapp data-message="Olá! Vim pelo site e gostaria de falar com a Líder Assessoria Contábil." href="https://wa.me/5597981175782" target="_blank" rel="noopener">Chamar no WhatsApp <span>↗</span></a>
+        </div>
+
+        <div class="contact-card reveal reveal-delay">
+          <div class="contact-card-header">
+            <img src="assets/logo.png" alt="" class="contact-logo">
+            <div><strong>LÍDER</strong><small>ASSESSORIA CONTÁBIL</small></div>
+          </div>
+
+          <div class="contact-info">
+            <span class="contact-info-icon">⌖</span>
+            <div><small>ENDEREÇO</small><p>Avenida Dezoito, nº 116, Platô do Piquiá, Boca do Acre — Amazonas</p></div>
+          </div>
+
+          <div class="contact-info">
+            <span class="contact-info-icon">◉</span>
+            <div><small>WHATSAPP</small><p><a href="https://wa.me/5597981175782" target="_blank" rel="noopener">(97) 98117-5782</a></p></div>
+          </div>
+
+          <div class="contact-info">
+            <span class="contact-info-icon">◎</span>
+            <div><small>INSTAGRAM</small><p><a href="https://www.instagram.com/liderassessoriacontabil/" target="_blank" rel="noopener">@liderassessoriacontabil</a></p></div>
+          </div>
+
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Avenida+Dezoito+116+Plato+do+Piquia+Boca+do+Acre+Amazonas" target="_blank" rel="noopener">Ver endereço no mapa <span>↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-main">
+      <a class="brand footer-brand" href="#topo">
+        <img src="assets/logo.png" alt="Líder Assessoria Contábil" class="brand-logo">
+      </a>
+      <p>Contabilidade próxima, orientação clara e compromisso com seu negócio.</p>
+      <a href="#topo" class="back-top" aria-label="Voltar ao topo">↑</a>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span id="current-year"></span> Líder Assessoria Contábil. Todos os direitos reservados.</span>
+      <a href="#topo">Voltar ao início ↑</a>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" data-whatsapp data-message="Olá! Vim pelo site da Líder Assessoria Contábil e gostaria de informações." href="https://wa.me/5597981175782" target="_blank" rel="noopener" aria-label="Falar com a Líder pelo WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M16 3.2A12.5 12.5 0 0 0 5.3 22.1L3.5 28.7l6.8-1.8A12.5 12.5 0 1 0 16 3.2Zm0 22.7a10.1 10.1 0 0 1-5.1-1.4l-.4-.2-4 .1 1.1-3.8-.3-.4A10.1 10.1 0 1 1 16 25.9Zm5.6-7.6c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1a8.3 8.3 0 0 1-2.5-1.5 9.3 9.3 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5s0-.4 0-.5-.7-1.7-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1.1 1.1-1.1 2.7 1.2 3.1 1.4 3.3 2.3 3.5 5.5 4.8c.8.3 1.4.5 1.9.6.8.2 1.5.2 2 .1.6-.1 1.8-.7 2-1.4s.3-1.3.2-1.4-.3-.2-.6-.4Z"/>
+    </svg>
+  </a>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Voltar ao topo">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
