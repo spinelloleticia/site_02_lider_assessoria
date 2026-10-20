@@ -3022,10 +3022,9 @@ html.js-intro:not(.site-in) .hero-grid {
 /* Regimes Tributários */
 
 .types {
-  background:
-  radial-gradient(ellipse at 90% 10%, rgba(27, 72, 122, .25), transparent 40%),
-  linear-gradient(120deg, #08172f, #0b2142);
-  border-block: 0;
+  padding-block: 110px;
+  background: #fdfcfe;                       /* diferencia da seção Público, que é cinza claro */
+  border-block: 1px solid var(--border-light);
 }
 
 .types .audience-card {
